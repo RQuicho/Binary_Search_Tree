@@ -105,7 +105,7 @@ class BinarySearchTree {
     return currentNode;
   }
 
-  /** dfsPreOrder(): Traverse the array using pre-order DFS.
+  /** dfsPreOrder(): Traverse the array using pre-order DFS (depth first search).
    * Return an array of visited nodes. */
 
   dfsPreOrder() {
@@ -122,7 +122,7 @@ class BinarySearchTree {
     return visitedNodes;
   }
 
-  /** dfsInOrder(): Traverse the array using in-order DFS.
+  /** dfsInOrder(): Traverse the array using in-order DFS (depth first search).
    * Return an array of visited nodes. */
 
   dfsInOrder() {
@@ -139,7 +139,7 @@ class BinarySearchTree {
     return visitedNodes;
   }
 
-  /** dfsPostOrder(): Traverse the array using post-order DFS.
+  /** dfsPostOrder(): Traverse the array using post-order DFS (depth first search).
    * Return an array of visited nodes. */
 
   dfsPostOrder() {
@@ -156,11 +156,27 @@ class BinarySearchTree {
     return visitedNodes;
   }
 
-  /** bfs(): Traverse the array using BFS.
+  /** bfs(): Traverse the array using BFS (breadth first search).
    * Return an array of visited nodes. */
 
   bfs() {
+    let node = this.root;
+    let queue = [];
+    let visitedNodes = [];
 
+    queue.push(node);
+
+    while (queue.length) {
+      node = queue.shift(); // shift removes first element and returns that removed element.
+      visitedNodes.push(node.val);
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    return visitedNodes;
   }
 
   /** Further Study!
